@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张雪的个人网站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8f0; /* 浅绿色背景 */
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+        header {
+            background: #4CAF50; /* 清新的绿色 */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .sidebar {
+            width: 200px;
+            background: #4CAF50; /* 清新的绿色 */
+            padding: 20px;
+        }
+        .sidebar .tab-button {
+            display: block;
+            padding: 10px;
+            margin: 10px 0;
+            background: #45a049; /* 稍深的绿色 */
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .sidebar .tab-button.active {
+            background: #3d8b40; /* 更深的绿色 */
+        }
+        .sidebar .tab-button:hover {
+            background: #3d8b40; /* 更深的绿色 */
+        }
+        .container {
+            flex: 1;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            border-radius: 10px;
+        }
+        h2 {
+            color: #4CAF50; /* 清新的绿色标题 */
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        .contact-info a {
+            color: #4CAF50; /* 清新的绿色链接 */
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+        <header>
+            <h1>张雪</h1>
+            <p>个人网站</p>
+        </header>
+        <div class="tab-button active" data-tab="about">个人简介</div>
+        <div class="tab-button" data-tab="education">教育经历</div>
+        <div class="tab-button" data-tab="honors">曾获荣誉</div>
+        <div class="tab-button" data-tab="skills">获得技能</div>
+        <div class="tab-button" data-tab="contact">联系方式</div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="container">
+        <!-- 个人简介 -->
+        <div id="about" class="tab-content active">
+            <h2>个人简介</h2>
+            <p>张雪，本科毕业于湖南农业大学，硕士就读于华中农业大学</p>
+        </div>
+
+        <!-- 教育经历 -->
+        <div id="education" class="tab-content">
+            <h2>教育经历</h2>
+            <ul>
+                <li><strong>本科</strong>：湖南农业大学</li>
+                <li><strong>硕士</strong>：华中农业大学（在读）</li>
+            </ul>
+        </div>
+
+        <!-- 曾获荣誉 -->
+        <div id="honors" class="tab-content">
+            <h2>曾获荣誉</h2>
+            <ul>
+                <li>湖南农业大学校级三好学生</li>
+                <li>湖南农业大学校级三好学生标兵</li>
+                <li>湖南省优秀毕业生</li>
+            </ul>
+        </div>
+
+        <!-- 获得技能 -->
+        <div id="skills" class="tab-content">
+            <h2>获得技能</h2>
+            <ul>
+                <li>熟练掌握英语（全国大学生英语竞赛二等奖）</li>
+                <li>农业资源与环境相关专业知识</li>
+                <li>数据分析与处理</li>
+                <li>团队协作与项目管理</li>
+            </ul>
+        </div>
+
+        <!-- 联系方式 -->
+        <div id="contact" class="tab-content">
+            <h2>联系方式</h2>
+            <p>邮箱：<a href="mailto:2548582427@qq.com">2548582427@qq.com</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Tab 切换功能
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 移除所有按钮的 active 类
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                // 隐藏所有内容
+                tabContents.forEach(content => content.classList.remove('active'));
+                // 添加 active 类到当前按钮
+                button.classList.add('active');
+                // 显示对应的内容
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
